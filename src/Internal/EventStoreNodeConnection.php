@@ -923,6 +923,8 @@ final class EventStoreNodeConnection implements
 
     public function __destruct()
     {
-        $this->close();
+        // This can cause segmentation fault.
+        // https://github.com/protocolbuffers/protobuf/issues/8454
+        // $this->close();
     }
 }
